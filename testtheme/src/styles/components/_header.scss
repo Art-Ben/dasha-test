@@ -1,0 +1,188 @@
+.cst-header {
+    width: 100%;
+    @include flex;
+    @include flex-wrap(wrap);
+    @include align-items(center);
+    @include justify-content(center);
+    min-height: 100px;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    background: transparent;
+    @include transition(all .6s);
+    background: #19283f;
+
+    .container {
+        @include flex;
+        @include flex-wrap(wrap);
+        @include align-items(center);
+        @include justify-content(space-between);
+    }
+    
+    &__left,
+    &__right {
+        position: relative;
+        @include flex;
+        @include flex-wrap(wrap);
+        @include align-items(center);
+        @include justify-content(flex-start);
+    }
+
+    &__logo {
+       width: auto;
+       max-width: 250px;
+       img {
+           width: auto;
+           max-width: 100%;
+           height: auto;
+       }
+    }
+
+    &__nav {
+        width: auto;
+        @include flex;
+        @include flex-wrap(wrap);
+        @include align-items(center);
+        @include justify-content(flex-start);
+        list-style: none;
+
+        &--item {
+            width: auto;
+            margin-right: 30px;
+            a {
+                display: block;
+                text-decoration: none;
+                transition: all .6s;
+                @include font('Roboto', 15px, #a8b9c0 ,400, 23px);
+                
+                &:hover {
+                    color: #ff3150;
+                }
+            }
+
+            &.current {
+                a {
+                    color: #00c7c0;
+
+                    &:hover {
+                        color: #00c7c0;
+                    }
+                }
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+
+        @media screen and (max-width:1280px) {
+            & {
+                display: none;
+            }
+        }
+    }
+    
+
+    &__searchBtn {
+        width: 70px;
+        height: 30px;
+        background-color: transparent;
+        background-image: url('../images/search-icon__beruza.png');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 20px 20px;
+        transition: all .8s;
+        border: none;
+        border-left:1px solid  #00c6bf;
+        margin: 0 30px;
+        outline: none;
+        cursor: pointer;
+
+        &:hover {
+            background-image: url('../images/search-icon__white.png');
+            background-color: #ff3150;
+            border-left-color: #ff3150;
+            border-radius: 2px;
+        }
+
+    }
+
+    &__loginBtn {
+        width: auto;
+        display: block;
+        padding: 10px 35px;
+        border-radius: 10px;
+        background: #ff3150;
+        @include font('Roboto', 15px, #ffc501 ,400, 23px);
+        transition: all .6s;
+        outline: none;
+        cursor: pointer;
+        border: none;
+
+        &:hover {
+            color: #ff3150;
+            background-color: #ffc501;
+        }
+
+        @media screen and (max-width:560px) {
+            & {
+                display: none;
+            }
+        }
+    }
+
+    &__mobileBurger {
+        width: 30px;
+        height: 20px;
+        @include flex-wrap(wrap);
+        @include align-items(center);
+        @include justify-content(flex-start);
+        position: relative;
+        display: none;
+        outline: none;
+        border: none;
+        background: transparent;
+        margin-left: 15px;
+
+        .line {
+            width: 100%;
+            height: 2px;
+            border-radius: 10px;
+            position: absolute;
+            display: block;
+            background: #ff3150;
+
+            &:first-child {
+                top: 0;
+            }
+
+            &:nth-child(2) {
+                top: calc(50% - 1px);
+            }
+
+            &:last-child {
+                bottom: 0;
+            }
+        }
+        
+        @media screen and (max-width:1280px) {
+            & {
+                @include flex;
+            }
+        }
+
+
+        @media screen and (max-width:560px) {
+            & {
+                margin-left: 0;
+            }
+        }
+
+    }
+
+    @media screen and (max-width:1280px) {
+        & {
+            padding: 0 25px;
+        }
+    }
+}

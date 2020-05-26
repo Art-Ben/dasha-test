@@ -1,0 +1,257 @@
+/*
+    Стили для базовых, общих, повторяющихся элементов
+*/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    overflow-y: scroll;
+}
+
+body {
+    overflow-x: hidden;
+    min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
+}
+
+.container {
+    width: 100%;
+    max-width: $CONTAINER_WIDTH;
+    position: relative;
+
+    @media screen and (max-width: $CONTAINER_WIDTH) {
+        max-width: 100%;
+    }
+}
+
+.load_more_btn_cont {
+    @include flex;
+    @include align-items(center);
+    @include justify-content(center);
+    @include flex-wrap(wrap);
+    width: 100%;
+    margin: 65px 0;
+
+    .ajax_load_more_posts {
+        background: $COLOR_BLUE;
+        min-height: 50px;
+        @include flex;
+        @include align-items(center);
+        @include justify-content(center);
+        @include flex-wrap(wrap);
+        @include font('Roboto', 13px, $COLOR_WHITE, 700, 21px);
+        padding: 20px 40px;
+        border-radius: 2px;
+        transition: all .6s;
+        text-decoration: none;
+        text-transform: uppercase;
+        position: relative;
+
+        &:hover {
+            color: $COLOR_BLUE;
+            background: $COLOR_WHITE;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: $COLOR_BLUE;
+            background-size: 32px 32px;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-image: url('../images/loader.gif');
+            border-radius: 2px;
+            width: 100%;
+            height: 100%;
+            transition: all .6s;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        &.loading {
+            &:after {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+
+        &.disable {
+            cursor: not-allowed;
+            opacity: .5;
+
+            &:hover {
+                background: $COLOR_BLUE;
+                color: $COLOR_WHITE;
+            }
+        }
+    }
+}
+
+.mobileMenu {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    overflow-y: auto;
+    background: #ff3150;
+    @include flex;
+    @include align-items(center);
+    @include justify-content(center);
+    @include flex-wrap(wrap);
+    padding: 50px 0;
+    z-index: 1001;
+    transition: all .6s;
+
+    &.active {
+        top: 0;
+    }
+
+    &__close {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        background-size: 30px 30px;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-image: url('../images/icon-close__blue.svg');
+        border: none;
+        outline: none;
+        background-color: $COLOR_WHITE;
+        cursor: pointer;
+    }
+
+    &__list {
+        width: 100%;
+        @include flex;
+        @include align-items(center);
+        @include justify-content(center);
+        @include flex-wrap(wrap);
+        list-style: none;
+        &--item {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 30px;
+            background: transparent;
+            a {
+                padding: 10px 25px;
+                @include font('Roboto', 24px, $COLOR_WHITE, 700, 21px);
+                text-decoration: none;
+            }
+
+            &.current {
+                a {
+                    background: $COLOR_WHITE;
+                    color: #347cd2;
+                }
+                
+            }
+        }
+    }
+}
+
+.cstContactPage {
+    width: 100%;
+    @include flex;
+    @include flex-wrap(wrap);
+    @include align-items(center);
+    @include justify-content(center);
+    position: relative;
+    min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
+
+    .cstMap {
+        width: 100%!important;
+        height: 100%!important;
+        position:absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
+    }
+
+    &__info {
+        @include flex;
+        @include flex-wrap(wrap);
+        @include align-items(center);
+        @include align-content(center);
+        @include justify-content(center);
+        position: absolute;
+        width: 80%;
+        height: 80%;
+        z-index: 3;
+        background: rgba(255, 49, 80, 0.7);
+        border-radius: 7px;
+        box-shadow: 0 0 20% rgba(0,0,0,.15);
+        &--title {
+            width: 100%;
+            text-align: center;
+            @include font('Roboto', 24px, $COLOR_WHITE, 700, 21px);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        &--subtitle {
+            width: 100%;
+            text-align: center;
+            @include font('Roboto', 20px, $COLOR_WHITE, 400, 24px);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        &--cont {
+            width: 80%;
+            @include flex;
+            @include flex-wrap(wrap);
+            @include align-items(center);
+            @include justify-content(center);
+            margin: 0 auto;
+            background: $COLOR_WHITE;
+            border-radius: 2px;
+            padding: 25px;
+            @include font('Roboto', 24px, $COLOR_BLACK, 400, 24px);
+        }
+
+        &--address,
+        .telephone_email {
+            width: 50%;
+            @include flex;
+            @include flex-wrap(wrap);
+            @include align-items(center);
+            @include justify-content(flex-start);
+            margin-bottom: 15px;
+            .ln {
+                width: 100%;
+                margin-bottom: 15px;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+            @media screen and (max-width:1280px) {
+                & {
+                    @include font('Roboto', 16px, $COLOR_BLACK, 400, 24px);
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

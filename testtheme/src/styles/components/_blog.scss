@@ -1,0 +1,119 @@
+.cstPostsPage {
+    padding-top: 200px;
+    @include flex;
+    @include flex-wrap(wrap);
+    @include align-items(flex-start);
+    @include justify-content(center);
+    width: 100%;
+
+    .container {
+        @include flex;
+        @include flex-wrap(wrap);
+        @include align-items(flex-start);
+        @include justify-content(center);
+    }
+
+    &__title {
+        width: 100%;
+        @include font('Roboto', 35px, #1a2940 , 500, 43px);
+        @include flex;
+        @include flex-wrap(wrap);
+        @include align-items(flex-start);
+        @include justify-content(center);
+        margin-bottom: 60px;
+    }
+
+    .caption {
+        width: 100%;
+        @include font('Roboto', 35px, #1a2940 , 500, 43px);
+        margin-bottom: 15px;
+        text-align: center;
+        display: block;
+    }
+
+    .subtitle {
+        width: 100%;
+        text-align: center;
+        display: block;
+        @include font('Roboto', 15px, #a8b9c0 , 400, 23px);
+        text-transform: uppercase;
+        &:after {
+            content: '';
+            display: block;
+            width: 120px;
+            height: 1px;
+            background: #00c6bf;
+            margin-top: 25px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    &__items {
+        width: 100%;
+        @include flex;
+        @include flex-wrap(wrap);
+        @include align-items(flex-start);
+        @include justify-content(space-between);
+        padding: 0 25px;
+    }
+
+    &__empty {
+        width: 100%;
+        @include font('Roboto', 20px, #a8b9c0 , 700, 2px);
+        background: #ff3150;
+        padding: 50px;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    &__single {
+        width: calc(50% - 20px);
+        @include flex;
+        @include flex-wrap(wrap);
+        @include align-items(flex-start);
+        @include justify-content(center);
+        box-shadow: 0 0 4px rgba(0,0,0,.15);
+        margin-bottom: 40px;
+        .thumb {
+            width: 100%;
+            min-height: 350px;
+            background-color:#a8b9c0;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .info {
+            width: 100%;
+            padding: 25px;
+            .date {
+                display: block;
+                width: 100%;
+                text-align: left;
+                @include font('Roboto', 13px, #a8b9c0 , 400, 20px);
+                margin-bottom: 5px;
+            }
+
+            .title {
+                display: block;
+                width: 100%;
+                text-align: left;
+                @include font('Roboto', 16px, #1a2940 , 600, 24px);
+                margin-bottom: 10px;
+            }
+
+            .desc {
+                display: block;
+                width: 100%;
+                text-align: left;
+                @include font('Roboto', 14px, #0f3977 , 400, 22px);
+            }
+        }
+
+        @media screen and (max-width:560px) {
+            width: 100%;
+        }
+
+    }
+}
